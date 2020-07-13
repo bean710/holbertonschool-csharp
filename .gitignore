@@ -1,1 +1,3 @@
 0x00-csharp-hello_world/packages-microsoft-prod.deb
+obj/
+bin/

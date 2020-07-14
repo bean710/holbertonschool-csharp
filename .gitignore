@@ -3,3 +3,4 @@ obj/
 bin/
 0x01-csharp-ifelse_loops_methods/dnr.sh
 0x01-csharp-ifelse_loops_methods/dnc.sh
+*-main.cs

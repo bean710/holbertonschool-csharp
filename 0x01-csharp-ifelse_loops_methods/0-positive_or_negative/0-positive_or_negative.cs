@@ -11,6 +11,6 @@ class Program
         else if (number < 0)
             Console.WriteLine("{0} is negative", number);
         else
-            Console.Write("{0} is zero", number);
+            Console.WriteLine("{0} is zero", number);
     }
 }

@@ -9,7 +9,7 @@ class Program
             if (i == 99)
                 Console.WriteLine(i);
             else
-                Console.Write("{0}, ", i);
+                Console.Write("{0:D2}, ", i);
         }
     }
 }

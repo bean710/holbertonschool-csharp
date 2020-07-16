@@ -1,6 +1,6 @@
 0x00-csharp-hello_world/packages-microsoft-prod.deb
 obj/
 bin/
-0x01-csharp-ifelse_loops_methods/dnr.sh
-0x01-csharp-ifelse_loops_methods/dnc.sh
+*/dnr.sh
+*/dnc.sh
 *-main.cs

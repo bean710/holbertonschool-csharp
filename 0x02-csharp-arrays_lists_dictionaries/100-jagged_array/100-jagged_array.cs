@@ -21,7 +21,7 @@ class Program
                 }
                 else
                 {
-                    Console.Write($", {jaggedArray[i][j]}");
+                    Console.Write($" {jaggedArray[i][j]}");
                 }
             }
             Console.WriteLine("");

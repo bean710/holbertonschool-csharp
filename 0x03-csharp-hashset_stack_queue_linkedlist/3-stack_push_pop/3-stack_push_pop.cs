@@ -14,11 +14,11 @@ class MyStack
 
         if (foundSearch)
         {
-            while (aStack.Peek() != search)
-            {
-                aStack.Pop();
+            string val;
+            do { 
+                val = aStack.Pop();
             }
-            aStack.Pop();
+            while (val != search);
         }
 
         aStack.Push(newItem);

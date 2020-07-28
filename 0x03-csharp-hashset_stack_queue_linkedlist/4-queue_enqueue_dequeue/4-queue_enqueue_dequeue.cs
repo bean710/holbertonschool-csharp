@@ -17,7 +17,7 @@ class MyQueue
         }
 
         bool foundSearch = aQueue.Contains(search);
-        Console.WriteLine("Stack contains \"{0}\": {1}", search, foundSearch);
+        Console.WriteLine("Queue contains \"{0}\": {1}", search, foundSearch);
 
         if (foundSearch)
         {

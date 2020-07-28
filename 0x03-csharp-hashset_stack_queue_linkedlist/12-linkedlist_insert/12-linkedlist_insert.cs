@@ -11,8 +11,10 @@ class LList
         {
             if (n >= node.Value && n < node.Next.Value)
             {
-                return myLList.addAfter(node, n);
+                return myLList.AddAfter(node, n);
             }
+
+            node = node.Next;
         }
 
         return null;

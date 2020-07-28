@@ -8,6 +8,11 @@ enum Rating
 
 struct Dog
 {
+    public string name;
+    public float age;
+    public string owner;
+    public Rating rating;
+
     public Dog(string n, float a, string o, Rating r)
     {
         name = n;
@@ -15,9 +20,4 @@ struct Dog
         owner = o;
         rating = r;
     }
-
-    public string name;
-    public float age;
-    public string owner;
-    public Rating rating;
 }

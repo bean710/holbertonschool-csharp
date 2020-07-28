@@ -1,12 +1,12 @@
 ﻿using System;
-enum Rating
+public enum Rating
 {
     Goood,
     Great,
     Excellent
 }
 
-struct Dog
+public struct Dog
 {
     public string name;
     public float age;

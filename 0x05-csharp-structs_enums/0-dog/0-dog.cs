@@ -1,6 +1,6 @@
 ﻿using System;
 
-enum Rating
+public enum Rating
 {
     Goood,
     Great,

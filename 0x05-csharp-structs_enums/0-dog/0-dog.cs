@@ -2,7 +2,7 @@
 
 public enum Rating
 {
-    Goood,
+    Good,
     Great,
     Excellent
 }

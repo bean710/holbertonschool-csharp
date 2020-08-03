@@ -15,6 +15,7 @@ namespace Tests
         [TestCase(0, "")]
         [TestCase(0, ".!123")]
         [TestCase(1, ".!123bar")]
+        [TestCase(2, ".!123barBaz")]
         public void CamelCase_NormalString_ReturnsNumberOfWords(int expected, string s)
         {
             int result = Text.Str.CamelCase(s);

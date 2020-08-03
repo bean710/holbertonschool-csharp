@@ -7,6 +7,11 @@ namespace Text
     /// </summary>
     public class Str
     {
+        /// <summary>
+        /// Finds the index of the first non-repeating character of a string.
+        /// </summary>
+        /// <param name="s">The string to check.</param>
+        /// <returns>The index of the first unique character, or -1 if none found.</returns>
         public static int UniqueChar(string s)
         {
             int[] counter = new int[26];

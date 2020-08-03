@@ -15,7 +15,7 @@ dotnet new classlib
 
 mv Class1.cs $2.cs
 
-sed -i '/<\/PropertyGroup>/i <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml<\/DocumentationFile>' $2.csproj
+sed -i '/<\/PropertyGroup>/i <DocumentationFile>bin\\$(Configuration)\\$(TargetFramework)\\$(AssemblyName).xml<\/DocumentationFile>' $2.csproj
 
 cd ..
 dotnet sln add $2/$2.csproj

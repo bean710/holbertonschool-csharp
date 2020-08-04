@@ -16,6 +16,9 @@ namespace Text
         {
             int[] counter = new int[26];
 
+            if (s == null)
+                return -1;
+
             foreach (char c in s.ToCharArray())
             {
                 counter[c - 'a'] += 1;

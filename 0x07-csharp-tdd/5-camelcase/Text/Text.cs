@@ -16,6 +16,9 @@ namespace Text
         {
             int wordCount = 0;
 
+            if (s == null)
+                return 0;
+
             for (int i = 0; i < s.Length; i++)
             {
                 char c = s[i];

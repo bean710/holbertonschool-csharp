@@ -20,6 +20,8 @@ namespace Tests
         }
 
         [TestCase("aabbccdd")]
+        [TestCase("")]
+        [TestCase(null)]
         public void UniquChar_NoUnique_ReturnsNegativeOne(string input)
         {
             int output = Text.Str.UniqueChar(input);

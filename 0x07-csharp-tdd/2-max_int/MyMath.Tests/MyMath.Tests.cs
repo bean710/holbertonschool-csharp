@@ -39,5 +39,15 @@ namespace Tests
 
             Assert.AreEqual(0, output);
         }
+
+        [Test]
+        public void Max_NullList_ReturnsZero()
+        {
+            List<int> input = null;
+
+            int output = MyMath.Operations.Max(input);
+
+            Assert.AreEqual(0, output);
+        }
     }
 }

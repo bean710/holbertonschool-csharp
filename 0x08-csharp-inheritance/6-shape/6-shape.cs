@@ -36,7 +36,7 @@ class Rectangle : Shape
         get { return this.height; }
         set {
             if (value < 0)
-                throw new ArgumentException("Width must be greater than or equal to 0");
+                throw new ArgumentException("Height must be greater than or equal to 0");
             
             this.height = value;
         }

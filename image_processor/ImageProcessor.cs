@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 class ImageProcessor
 {
@@ -7,6 +8,9 @@ class ImageProcessor
     {
         foreach (String filename in filenames)
         {
+            string name = Path.GetFileNameWithoutExtension(filename);
+            string extension = Path.GetExtension(filename);
+
             Bitmap bm = new Bitmap(filename);
             
             for (int i = 0; i < bm.Height; i++)
@@ -18,7 +22,7 @@ class ImageProcessor
                 }
             }
 
-            bm.Save("foo.jpg");
+            bm.Save($"{name}_inverted{extension}");
         }
     }
 }

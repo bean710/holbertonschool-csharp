@@ -4,3 +4,8 @@ bin/
 */dnr.sh
 */dnc.sh
 *-main.cs
+dnc.sh
+dnr.sh
+*.jpg
+*main.cs
+*/images

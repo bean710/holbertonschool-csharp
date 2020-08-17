@@ -21,6 +21,10 @@ class ImageProcessor
         }
     }
 
+    /// <summary>
+    /// Threadable function to invert the image
+    /// </summary>
+    /// <param name="filename">Filename of image to invert</param>
     private static void InvImg(string filename)
     {
         string name = Path.GetFileNameWithoutExtension(filename);

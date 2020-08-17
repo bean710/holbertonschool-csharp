@@ -29,7 +29,7 @@ class ImageProcessor
                 }
             }
 
-            bm.Save($"{name}_inverted{extension}");
+            bm.Save($"{name}_inverse{extension}");
         }
     }
 }

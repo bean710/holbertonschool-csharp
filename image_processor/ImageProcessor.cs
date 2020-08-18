@@ -31,16 +31,31 @@ class ImageProcessor
         string extension = Path.GetExtension(filename);
 
         Bitmap bm = new Bitmap(filename);
-        
-        for (int i = 0; i < bm.Height; i++)
-        {
-            for (int j = 0; j < bm.Width; j++)
-            {
-                Color og = bm.GetPixel(j, i);
-                bm.SetPixel(j, i, Color.FromArgb(255 - og.R, 255 - og.G, 255 - og.B));
-            }
-        }
 
+        Rectangle rect = new Rectangle(0, 0, bm.Width, bm.Height);
+        System.Drawing.Imaging.BitmapData bmData =
+            bm.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+            bm.PixelFormat);
+
+        IntPtr p = bmData.Scan0;
+
+        int bytes = Math.Abs(bmData.Stride) * bm.Height;
+        byte[] rgbValues = new byte[bytes];
+
+        System.Runtime.InteropServices.Marshal.Copy(p, rgbValues, 0, bytes);
+
+        for (int i = 0; i < rgbValues.Length; i++)
+            rgbValues[i] = (byte)(255 - rgbValues[i]);
+
+        System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, p, bytes);
+
+        bm.UnlockBits(bmData);
+        
         bm.Save($"{name}_inverse{extension}");
+    }
+
+    public static void Grayscale(string[] filenames)
+    {
+
     }
 }

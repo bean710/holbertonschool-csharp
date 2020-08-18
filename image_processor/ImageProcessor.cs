@@ -55,10 +55,9 @@ class ImageProcessor
             Console.WriteLine($"Length: {bytes.Length} mod 3: {bytes.Length % 3}");
             for (int i = 0; i < bytes.Length - 2; i += 3)
             {
-                Color c = Color.FromArgb(bytes[i], bytes[i + 1], bytes[i + 2]);
                 byte val = 0;
 
-                if (c.GetBrightness() >= threshold)
+                if ((bytes[i] + bytes[i + 1] + bytes[i + 2]) >= threshold)
                     val = 255;
 
                 bytes[i] = val;

@@ -52,7 +52,6 @@ class ImageProcessor
     {
         ChangeFiles(filenames, "_bw", (byte[] bytes) => {
 
-            Console.WriteLine($"Length: {bytes.Length} mod 3: {bytes.Length % 3}");
             for (int i = 0; i < bytes.Length - 2; i += 3)
             {
                 byte val = 0;

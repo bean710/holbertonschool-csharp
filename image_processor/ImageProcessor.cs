@@ -27,7 +27,7 @@ class ImageProcessor
     /// Outputs the grayscale versions of files
     /// </summary>
     /// <param name="filenames">An array of the names of the files to process</param>
-    public static void GrayScale(string[] filenames)
+    public static void Grayscale(string[] filenames)
     {
         ChangeFiles(filenames, "_grayscale", (byte[] bytes) => {
 

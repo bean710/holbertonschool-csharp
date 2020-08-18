@@ -23,6 +23,31 @@ class ImageProcessor
         });
     }
 
+    /// <summary>
+    /// Outputs the grayscale versions of files
+    /// </summary>
+    /// <param name="filenames">An array of the names of the files to process</param>
+    public static void GrayScale(string[] filenames)
+    {
+        ChangeFiles(filenames, "_grayscale", (byte[] bytes) => {
+
+            for (int i = 0; i < bytes.Length - 2; i += 3)
+            {
+                byte avg = (byte)((bytes[i] + bytes[i + 1] + bytes[i + 2]) / 3);
+
+                bytes[i] = avg;
+                bytes[i + 1] = avg;
+                bytes[i + 2] = avg;
+            }
+
+        });
+    }
+
+    /// <summary>
+    /// Outputs the black and white version of an image based on a threshold
+    /// </summary>
+    /// <param name="filenames">Array of the names of the files to BW</param>
+    /// <param name="threshold">The threshold of the brightness of a pixel</param>
     public static void BlackWhite(string[] filenames, double threshold)
     {
         ChangeFiles(filenames, "_bw", (byte[] bytes) => {
@@ -44,6 +69,12 @@ class ImageProcessor
         });
     }
 
+    /// <summary>
+    /// Parallelizes file processing
+    /// </summary>
+    /// <param name="filenames">An array of filenames to process</param>
+    /// <param name="app">The string to append to the end of the file name, but before the extension</param>
+    /// <param name="f">The function to call to process the pixels</param>
     public static void ChangeFiles(string[] filenames, string app, Action<byte[]> f)
     {
         Parallel.ForEach(filenames, (filename) => {

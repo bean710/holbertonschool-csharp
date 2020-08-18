@@ -68,6 +68,25 @@ class ImageProcessor
     }
 
     /// <summary>
+    /// Creates thumbnail images
+    /// </summary>
+    /// <param name="filenames">List of filenames to convert to thumbnails</param>
+    /// <param name="height">The desired height of the thumbnail</param>
+    public static void Thumbnail(string[] filenames, int height)
+    {
+        Parallel.ForEach(filenames, (filename) => {
+            string name = Path.GetFileNameWithoutExtension(filename);
+            string extension = Path.GetExtension(filename);
+
+            Image im = Image.FromFile(filename);
+            int width = im.Width / (im.Height / height);
+            Image thumb = im.GetThumbnailImage(width, height, ()=>false, IntPtr.Zero);
+
+            thumb.Save($"{name}_th{extension}");
+        });
+    }
+
+    /// <summary>
     /// Parallelizes file processing
     /// </summary>
     /// <param name="filenames">An array of filenames to process</param>

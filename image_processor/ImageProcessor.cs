@@ -23,7 +23,7 @@ class ImageProcessor
         });
     }
 
-    public static void Grayscale(string[] filenames, double threshold)
+    public static void BlackWhite(string[] filenames, double threshold)
     {
         ChangeFiles(filenames, "_bw", (byte[] bytes) => {
 
@@ -47,9 +47,7 @@ class ImageProcessor
     public static void ChangeFiles(string[] filenames, string app, Action<byte[]> f)
     {
         Parallel.ForEach(filenames, (filename) => {
-            Thread t = new Thread(()=>BitmapHelper(f, filename, app));
-
-            t.Start();
+            BitmapHelper(f, filename, app);
         });
     }
 

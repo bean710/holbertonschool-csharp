@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Class for image processing methods
@@ -14,18 +15,51 @@ class ImageProcessor
     /// <param name="filenames">Array of filenames of images to invert</param>
     public static void Inverse(string[] filenames)
     {
-        foreach (String filename in filenames)
-        {
-            Thread t = new Thread(()=>InvImg(filename));
+        ChangeFiles(filenames, "_inverse", (byte[] bytes) => {
+
+            for (int i = 0; i < bytes.Length; i++)
+                bytes[i] = (byte)(255 - bytes[i]);
+                
+        });
+    }
+
+    public static void Grayscale(string[] filenames, double threshold)
+    {
+        ChangeFiles(filenames, "_bw", (byte[] bytes) => {
+
+            Console.WriteLine($"Length: {bytes.Length} mod 3: {bytes.Length % 3}");
+            for (int i = 0; i < bytes.Length - 2; i += 3)
+            {
+                Color c = Color.FromArgb(bytes[i], bytes[i + 1], bytes[i + 2]);
+                byte val = 0;
+
+                if (c.GetBrightness() >= threshold)
+                    val = 255;
+
+                bytes[i] = val;
+                bytes[i + 1] = val;
+                bytes[i + 2] = val;
+            }
+
+        });
+    }
+
+    public static void ChangeFiles(string[] filenames, string app, Action<byte[]> f)
+    {
+        Parallel.ForEach(filenames, (filename) => {
+            Thread t = new Thread(()=>BitmapHelper(f, filename, app));
+
             t.Start();
-        }
+        });
     }
 
     /// <summary>
-    /// Threadable function to invert the image
+    /// Helper function to create locked bitmaps for altering images
     /// </summary>
-    /// <param name="filename">Filename of image to invert</param>
-    private static void InvImg(string filename)
+    /// <param name="f">Function to use to actually change the pixel array</param>
+    /// <param name="filename">The name of the original image</param>
+    /// <param name="app">The text to append after the file name, but before the extension</param>
+    public static void BitmapHelper(Action<byte[]> f, string filename, string app)
     {
         string name = Path.GetFileNameWithoutExtension(filename);
         string extension = Path.GetExtension(filename);
@@ -44,18 +78,12 @@ class ImageProcessor
 
         System.Runtime.InteropServices.Marshal.Copy(p, rgbValues, 0, bytes);
 
-        for (int i = 0; i < rgbValues.Length; i++)
-            rgbValues[i] = (byte)(255 - rgbValues[i]);
+        f(rgbValues);
 
         System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, p, bytes);
 
         bm.UnlockBits(bmData);
         
-        bm.Save($"{name}_inverse{extension}");
-    }
-
-    public static void Grayscale(string[] filenames)
-    {
-
+        bm.Save($"{name}{app}{extension}");
     }
 }

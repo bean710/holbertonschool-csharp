@@ -18,6 +18,6 @@ class VectorMath
 
         double squaredSum = (from num in vector select num * num).Sum();
 
-        return Math.Sqrt(squaredSum);
+        return Math.Round(Math.Sqrt(squaredSum), 1);
     }
 }

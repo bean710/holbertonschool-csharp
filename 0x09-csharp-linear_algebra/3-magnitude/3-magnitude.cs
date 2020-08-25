@@ -13,7 +13,7 @@ class VectorMath
     /// <returns>The magnitude of the vector</returns>
     public static double Magnitude(double[] vector)
     {
-        if (vector.Length != 1 && vector.Length != 2)
+        if (vector.Length != 2 && vector.Length != 3)
             return -1;
 
         double squaredSum = (from num in vector select num * num).Sum();

@@ -7,7 +7,7 @@ class MatrixMath
         if (matrix1.Rank != 2 || matrix2.Rank != 2 ||
             matrix1.GetLength(0) != matrix2.GetLength(1) ||
             matrix1.GetLength(1) != matrix2.GetLength(0))
-            return new double[,] { {-1} };
+            return new double[1,1] { {-1} };
         
         double[,] ret = new double[matrix1.GetLength(0), matrix2.GetLength(1)];
 

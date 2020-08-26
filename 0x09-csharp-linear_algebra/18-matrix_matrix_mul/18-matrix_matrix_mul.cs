@@ -5,7 +5,6 @@ class MatrixMath
     public static double[,] Multiply(double[,] matrix1, double[,] matrix2)
     {
         if (matrix1.Rank != 2 || matrix2.Rank != 2 ||
-            matrix1.GetLength(0) != matrix2.GetLength(1) ||
             matrix1.GetLength(1) != matrix2.GetLength(0))
             return new double[1,1] { {-1} };
         

@@ -2,30 +2,6 @@
 
 class MatrixMath
 {
-    public static double[,] Multiply(double[,] matrix1, double[,] matrix2)
-    {
-        if (matrix1.Rank != 2 || matrix2.Rank != 2 ||
-            matrix1.GetLength(1) != matrix2.GetLength(0))
-            return new double[1,1] { {-1} };
-        
-        double[,] ret = new double[matrix1.GetLength(0), matrix2.GetLength(1)];
-
-        for (uint i = 0; i < ret.GetLength(0); i++)
-        {
-            for (uint j = 0; j < ret.GetLength(1); j++)
-            {
-                double sum = 0;
-
-                for (uint k = 0; k < matrix2.GetLength(0); k++)
-                    sum += matrix1[i, k] * matrix2[k, j];
-                
-                ret[i, j] = Math.Round(sum, 2);
-            }
-        }
-
-        return ret;
-    }
-
     public static double[,] Rotate2D(double[,] matrix, double angle)
     {
         if (matrix.Rank != 2 || matrix.GetLength(1) != 2)
@@ -39,6 +15,14 @@ class MatrixMath
             {sin, cos}
         };
 
-        return Multiply(rotMat, matrix);
+        double[,] res = new double[matrix.GetLength(0), 2];
+
+        for (uint i = 0; i < matrix.GetLength(0); i++)
+        {
+            res[i, 0] = Math.Round(matrix[i, 0] * cos - matrix[i, 1] * sin, 2);
+            res[i, 1] = Math.Round(matrix[i, 0] * sin + matrix[i, 1] * cos, 2);
+        }
+
+        return res;
     }
 }

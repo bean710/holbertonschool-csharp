@@ -17,6 +17,11 @@ class VectorMath
         if (vector.Length < 2 || vector.Length > 3)
             return new double[1] {-1};
 
-        return (from num in vector select num * scalar);
+        double[] ret = new double[vector.Length];
+
+        for (uint i = 0; i < vector.Length; i++)
+            ret[i] = vector[i] * scalar;
+
+        return ret;
     }
 }

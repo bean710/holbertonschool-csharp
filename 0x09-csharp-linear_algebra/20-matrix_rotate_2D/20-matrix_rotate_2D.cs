@@ -39,6 +39,6 @@ class MatrixMath
             {sin, cos}
         };
 
-        return Multiply(matrix, rotMat);
+        return Multiply(rotMat, matrix);
     }
 }

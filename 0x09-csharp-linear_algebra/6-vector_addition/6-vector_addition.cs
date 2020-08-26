@@ -15,7 +15,7 @@ class VectorMath
     {
         if (vector1.Length != vector2.Length || vector1.Length < 2 || vector1.Length > 3)
         {
-            return new double[1](-1);
+            return new double[1] {-1};
         }
 
         double[] ret = new double[vector1.Length];

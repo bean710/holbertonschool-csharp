@@ -10,11 +10,6 @@ class MatrixMath
         double cos = Math.Cos(angle);
         double sin = Math.Sin(angle);
 
-        double[,] rotMat = new double[2,2] {
-            {cos, -sin},
-            {sin, cos}
-        };
-
         double[,] res = new double[matrix.GetLength(0), 2];
 
         for (uint i = 0; i < matrix.GetLength(0); i++)

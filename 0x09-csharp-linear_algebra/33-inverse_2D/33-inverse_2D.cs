@@ -41,7 +41,14 @@ class MatrixMath
 
     public static double[,] Inverse2D(double[,] matrix)
     {
-        double detInv = 1 / Determinant(matrix);
+        if (matrix.Rank != 2 || matrix.GetLength(0) != 2 || matrix.GetLength(1) != 2)
+            return new double[1, 1] { {-1} };
+    
+        double det = 1 / Determinant(matrix);
+        if (det == 0 || det == -1)
+            return new double[1, 1] { {-1} };
+
+        double detInv = 1 / det;
 
         return MultiplyScalar(new double[,] {
             { matrix[1, 1], -matrix[0, 1] },

@@ -13,7 +13,7 @@ class MatrixMath
         for (uint i = 0; i < matrix.GetLength(0); i++)
         {
             for (uint j = 0; j < matrix.GetLength(1); j++)
-                ret[i, j] = matrix[i, j] * scalar;
+                ret[i, j] = Math.Round(matrix[i, j] * scalar, 2);
         }
 
         return ret;
@@ -44,7 +44,7 @@ class MatrixMath
         if (matrix.Rank != 2 || matrix.GetLength(0) != 2 || matrix.GetLength(1) != 2)
             return new double[1, 1] { {-1} };
     
-        double det = 1 / Determinant(matrix);
+        double det = Determinant(matrix);
         if (det == 0 || det == -1)
             return new double[1, 1] { {-1} };
 

@@ -79,7 +79,7 @@ class Queue<T>
         /// <value>The next property gets/sets the next property of type Node</value>
         public Node next { get; set; }
 
-        Node(T value)
+        public Node(T value)
         {
             this.value = value;
             this.next = null;

@@ -127,9 +127,9 @@ class Queue<T>
 
         while (on != null)
         {
-            ret += on.value;
-            if (typeof(T) == typeof(string))
+            if (typeof(T) == typeof(string) && ret != "")
                 ret += " ";
+            ret += on.value;
                 
             on = on.next;
         }

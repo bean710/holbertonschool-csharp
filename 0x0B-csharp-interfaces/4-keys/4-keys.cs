@@ -170,7 +170,7 @@ class Key : Base, ICollectable
         else
         {
             isCollected = true;
-            Console.WriteLine($"You picked up the {name}.");
+            Console.WriteLine($"You pick up the {name}.");
         }
     }
 }

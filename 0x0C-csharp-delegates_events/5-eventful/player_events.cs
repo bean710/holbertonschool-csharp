@@ -75,7 +75,7 @@ partial class Player
         if (e.currentHp == 0)
         {
             Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine("Health has reached 0!");
+            Console.WriteLine("Health has reached zero!");
         }
         else
         {

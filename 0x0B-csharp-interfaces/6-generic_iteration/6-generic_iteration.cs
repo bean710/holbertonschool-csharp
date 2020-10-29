@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 
 /// <summary>
 /// A base class for all of the game objects
@@ -181,6 +182,11 @@ class Objs<T> : IEnumerable<T>
 {
     List<T> myList = new List<T>();
 
+    public void Add(T newItem)
+    {
+        myList.Add(newItem);
+    }
+
     public IEnumerator<T> GetEnumerator()
     {
         return myList.GetEnumerator();
@@ -189,10 +195,5 @@ class Objs<T> : IEnumerable<T>
     IEnumerator IEnumerable.GetEnumerator()
     {
         return this.GetEnumerator();
-    }
-
-    public void Add(T newItem)
-    {
-        myList.Add(newItem);
     }
 }
